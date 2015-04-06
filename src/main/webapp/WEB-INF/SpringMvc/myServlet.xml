@@ -11,14 +11,15 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.example.spring.mvc" />
 	<mvc:annotation-driven />
+	<context:property-placeholder location='classpath:${ENV}.properties' />
 	<bean id="log4jInitialization"
 		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
 		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
 		<property name="targetMethod" value="initLogging" />
 		<property name="arguments">
 			<list>
-				<value>classpath:log4j.properties</value>
-<!-- 				<value>classpath:${ENV}.properties</value> -->
+				<!-- <value>classpath:log4j.properties</value> -->
+				<value>classpath:${ENV}.properties</value>
 			</list>
 		</property>
 	</bean>

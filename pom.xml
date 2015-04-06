@@ -132,6 +132,24 @@
 			<url>http://repo.springsource.org/libs-snapshot</url>
 		</repository>
 	</repositories>
+	<profiles>
+		<profile>
+			<id>localMaven</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<server>localhost</server>
+				<!-- <url>http://192.168.1.247:8081/manager/text</url> -->
+				<port>8181</port>
+				<path>/SpringMvcAppDemo</path>
+				<username>tomcat</username>
+				<password>tomcat</password>
+				<finalName>SpringMvcAppDemo</finalName>
+				<ENV>local</ENV>
+			</properties>
+		</profile>
+	</profiles>
 	<build>
 		<finalName>SpringWebMvcAppDemo</finalName>
 		<resources>
@@ -188,19 +206,18 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.1</version>
 				<configuration>
-					<server>localhost</server>
-					<port>8181</port>
-					<!-- <path></path> -->
-					<!-- <server>${server}</server> -->
-					<!-- <url>${url}</url> -->
-					<!-- <port>${port}</port> -->
-					<!-- <path>${path}</path> -->
-					<!-- <username>${username}</username> -->
-					<!-- <password>${password}</password> -->
-					<!-- <contextFile>src/main/webapp/META-INF/context.xml</contextFile> -->
-					<!-- <systemProperties> -->
-					<!-- <ENV>${ENV}</ENV> -->
-					<!-- </systemProperties> -->
+<!-- 					<server>localhost</server> -->
+<!-- 					<port>8181</port> -->
+					<server>${server}</server>
+<!-- 					<url>${url}</url> -->
+					<port>${port}</port>
+					<path>${path}</path>
+					<username>${username}</username>
+					<password>${password}</password>
+					<contextFile>src/main/webapp/META-INF/context.xml</contextFile>
+					<systemProperties>
+					<ENV>${ENV}</ENV>
+					</systemProperties>
 				</configuration>
 			</plugin>
 		</plugins>
