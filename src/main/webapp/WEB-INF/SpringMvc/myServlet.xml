@@ -8,11 +8,19 @@
       http://www.springframework.org/schema/mvc/spring-mvc.xsd
      http://www.springframework.org/schema/context
      http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-	<!-- <context:annotation-config /> -->
+	<context:annotation-config />
 	<context:component-scan base-package="com.example.spring.mvc" />
 	<mvc:annotation-driven />
-	<bean id="test" class="com.example.spring.mvc.model.Student">
-		<property name="name" value="132"></property>
+	<bean id="log4jInitialization"
+		class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+		<property name="targetMethod" value="initLogging" />
+		<property name="arguments">
+			<list>
+				<value>classpath:log4j.properties</value>
+<!-- 				<value>classpath:${ENV}.properties</value> -->
+			</list>
+		</property>
 	</bean>
 	<!-- View Resolver Bean -->
 	<bean id="viewResolver"
