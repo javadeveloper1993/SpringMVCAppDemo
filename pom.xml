@@ -38,21 +38,24 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- Spring Context Jar -->
 		<dependency>
-			<!-- Spring Context Jar -->
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+
 		<!-- Spring Test Jar -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+
 		<!-- Spring Core Jar -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -101,37 +104,8 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-
-		<!-- SLF4j -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.5.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.5.8</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.5.8</version>
-		</dependency>
 	</dependencies>
-	<repositories>
-		<repository>
-			<id>in-project</id>
-			<name>In Project Repo</name>
-			<url>file://${project.basedir}/lib</url>
-		</repository>
 
-		<repository>
-			<id>spring-snapshot</id>
-			<name>Spring Maven SNAPSHOT Repository</name>
-			<url>http://repo.springsource.org/libs-snapshot</url>
-		</repository>
-	</repositories>
 	<profiles>
 		<profile>
 			<id>localMaven</id>
@@ -140,7 +114,6 @@
 			</activation>
 			<properties>
 				<server>localhost</server>
-				<!-- <url>http://192.168.1.247:8081/manager/text</url> -->
 				<port>8181</port>
 				<path>/SpringMvcAppDemo</path>
 				<username>tomcat</username>
@@ -152,46 +125,7 @@
 	</profiles>
 	<build>
 		<finalName>SpringWebMvcAppDemo</finalName>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.*</include>
-				</includes>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.*</include>
-				</includes>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <groupId>org.codehaus.mojo</groupId> -->
-			<!-- <artifactId>properties-maven-plugin</artifactId> -->
-			<!-- <version>1.0-alpha-2</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <phase>initialize</phase> -->
-			<!-- <goals> -->
-			<!-- <goal>read-project-properties</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- <configuration> -->
-			<!-- <files> -->
-			<!-- <file>${basedir}\src\main\resources\app.properties</file> -->
-			<!-- </files> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
@@ -206,58 +140,16 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.1</version>
 				<configuration>
-<!-- 					<server>localhost</server> -->
-<!-- 					<port>8181</port> -->
 					<server>${server}</server>
-<!-- 					<url>${url}</url> -->
 					<port>${port}</port>
 					<path>${path}</path>
 					<username>${username}</username>
 					<password>${password}</password>
-					<contextFile>src/main/webapp/META-INF/context.xml</contextFile>
 					<systemProperties>
-					<ENV>${ENV}</ENV>
+						<ENV>${ENV}</ENV>
 					</systemProperties>
 				</configuration>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											properties-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.0-alpha-2,)
-										</versionRange>
-										<goals>
-											<goal>
-												read-project-properties
-											</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>
