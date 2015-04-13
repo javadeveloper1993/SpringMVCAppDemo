@@ -20,7 +20,7 @@
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
 	<servlet>
-		<servlet-name>myDispacher</servlet-name>
+		<servlet-name>Dispatcher-Servlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -30,7 +30,7 @@
 	</servlet>
  
 	<servlet-mapping>
-		<servlet-name>myDispacher</servlet-name>
+		<servlet-name>Dispatcher-Servlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
  

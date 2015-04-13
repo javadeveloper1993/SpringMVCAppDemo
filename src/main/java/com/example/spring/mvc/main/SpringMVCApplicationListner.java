@@ -14,24 +14,6 @@ public class SpringMVCApplicationListner implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		logger.info(">>>>>>>>>> Context Initilized");
-		// WebApplicationContext webApplicationContext =
-		// WebApplicationContextUtils
-		// .getWebApplicationContext(sce.getServletContext());
-		// logger.info(">>>> ApplicationName :: "
-		// + webApplicationContext.getApplicationName());
-		// logger.info(" >>>>>>>>> :: BeanDefinitionCount :"
-		// + webApplicationContext.getBeanDefinitionCount());
-		// logger.info(">>>>>>>>> :::: ID ::: " +
-		// webApplicationContext.getId());
-		// logger.info(">>>>>>>>> :::: DisplayName ::: "
-		// + webApplicationContext.getDisplayName());
-		// String[] beanDefinitionNames = webApplicationContext
-		// .getBeanDefinitionNames();
-		// for (String name : beanDefinitionNames) {
-		// logger.info(name);
-		// }
-		// logger.info(" >>>>>>>>..  Startup Date :::: "
-		// + webApplicationContext.getStartupDate());
 	}
 
 	@Override

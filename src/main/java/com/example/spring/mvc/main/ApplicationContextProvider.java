@@ -45,9 +45,9 @@ public class ApplicationContextProvider implements ApplicationContextAware {
 		logger.info("-------------->>> Start List Bean size :---- >>>>-------------"
 				+ all.length);
 
-		// for (String string : all) {
-		// logger.info(string);
-		// }
+		for (String string : all) {
+			logger.info(string);
+		}
 
 		logger.info("-------------->>> End List Bean :---- >>>>-------------");
 	}
@@ -63,9 +63,9 @@ public class ApplicationContextProvider implements ApplicationContextAware {
 		logger.info("-------------->>> Start List URL size :---- >>>>-------------"
 				+ rmSet.size());
 
-		// for (RequestMappingInfo rm : rmSet) {
-		// logger.info(rm.getPatternsCondition().toString());
-		// }
+		for (RequestMappingInfo rm : rmSet) {
+			logger.info(rm.getPatternsCondition().toString());
+		}
 
 		logger.info("-------------->>> End List URL >>>>-------------");
 	}
