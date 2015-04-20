@@ -31,11 +31,11 @@ public class ApplicationContextProvider implements ApplicationContextAware {
 		/*
 		 * List down all Bean ....
 		 */
-		getBeanListFromWAC(webApplicationContext);
+		// getBeanListFromWAC(webApplicationContext);
 		/*
 		 * List down all requestMapping
 		 */
-		getRequestMappingUrlFromWAC(webApplicationContext);
+		// getRequestMappingUrlFromWAC(webApplicationContext);
 
 	}
 
