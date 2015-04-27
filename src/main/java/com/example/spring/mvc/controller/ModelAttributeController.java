@@ -2,10 +2,12 @@ package com.example.spring.mvc.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.example.spring.mvc.model.Person;
 
@@ -16,6 +18,7 @@ import com.example.spring.mvc.model.Person;
 
 @Controller
 @RequestMapping(value = "/modelAttribute")
+@SessionAttributes({ "personSession" })
 public class ModelAttributeController {
 	private static final Logger logger = Logger
 			.getLogger(ModelAttributeController.class);
@@ -30,14 +33,23 @@ public class ModelAttributeController {
 		return person;
 	}
 
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	private String getSession(@ModelAttribute("person") Person person,
+			Model model) {
+		model.addAttribute("personSession", person);
+		return "ModelAndSessionAttribure";
+	}
+
 	@RequestMapping(value = "/getPersonInfo", method = RequestMethod.GET)
 	@ResponseBody
 	private Person getPersonInfo(@ModelAttribute("person") Person person) {
-		logger.info("Model Attribute Handler Method Before Executed...!!!" + person);
+		logger.info("Model Attribute Handler Method Before Executed...!!!"
+				+ person);
 		person.setId("002");
 		person.setName("Patel Parth");
 		person.setAge(20);
-		logger.info("Model Attribute Handler Method After Executed...!!!" + person);
+		logger.info("Model Attribute Handler Method After Executed...!!!"
+				+ person);
 		return person;
 	}
 
