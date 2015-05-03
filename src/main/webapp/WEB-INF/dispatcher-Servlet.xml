@@ -75,4 +75,11 @@
 	</mvc:interceptors>
 
 	<mvc:resources mapping="/resources/**" location="/resources/"></mvc:resources>
+
+	<!-- File Upload -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="10000000" />
+	</bean>
 </beans>
