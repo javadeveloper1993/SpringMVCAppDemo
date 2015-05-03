@@ -6,6 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Index Page</title>
 </head>
-<body>Index Page For
+<body>Index Page For Spring MVC 
 </body>
 </html>
