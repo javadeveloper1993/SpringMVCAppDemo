@@ -43,8 +43,8 @@ public class ControllerAdviceController {
 		logger.info("In Exeption Method...!!! "
 				+ httpServletRequest.getRequestURI());
 		ModelAndView model = new ModelAndView("error/generic_error");
-		String status = HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase() + " :: "
-				+ HttpStatus.INTERNAL_SERVER_ERROR.value();
+		String status = HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase()
+				+ " :: " + HttpStatus.INTERNAL_SERVER_ERROR.value();
 		model.addObject("errCode", status);
 		model.addObject("errMsg", ex.getMessage());
 		model.addObject("stackTrace", ex.getStackTrace());
