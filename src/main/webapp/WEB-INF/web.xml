@@ -26,6 +26,10 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/dispatcher-Servlet.xml</param-value>
 		</init-param>
+<!-- 		<init-param> -->
+<!--     		<param-name>throwExceptionIfNoHandlerFound</param-name> -->
+<!--     		<param-value>true</param-value> -->
+<!-- 		</init-param> -->
 		<load-on-startup>1</load-on-startup>
 	</servlet>
  
@@ -36,7 +40,7 @@
 
 	<error-page>
 		<error-code>404</error-code>
-		<location>/error</location>
+		<location>/404Error</location>
 	</error-page>
   
 </web-app>

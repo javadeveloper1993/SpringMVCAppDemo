@@ -39,7 +39,7 @@ public class ApplicationContextProvider implements ApplicationContextAware {
 
 	}
 
-	private void getBeanListFromWAC(WebApplicationContext webApplicationContext) {
+	public void getBeanListFromWAC(WebApplicationContext webApplicationContext) {
 		String[] all = webApplicationContext.getBeanDefinitionNames();
 
 		logger.info("-------------->>> Start List Bean size :---- >>>>-------------"
@@ -52,7 +52,7 @@ public class ApplicationContextProvider implements ApplicationContextAware {
 		logger.info("-------------->>> End List Bean :---- >>>>-------------");
 	}
 
-	private void getRequestMappingUrlFromWAC(
+	public void getRequestMappingUrlFromWAC(
 			WebApplicationContext webApplicationContext) {
 		RequestMappingHandlerMapping requestMappingHandlerMapping = webApplicationContext
 				.getBean(RequestMappingHandlerMapping.class);

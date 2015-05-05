@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
  * @author Maulik
@@ -35,21 +35,20 @@ public class ExceptionGenerateController {
 				"This Is Runtime Expetion...!!!");
 	}
 
-	@RequestMapping(value = "/error", method = RequestMethod.GET)
-	public ModelAndView generate404NotFoundException(
-			NoHandlerFoundException ex, HttpServletRequest httpServletRequest) {
+	@RequestMapping("404Error")
+	public String generate404NotFoundException(
+			HttpServletRequest httpServletRequest, Model model, Exception ex) {
 		logger.info("In No Handler found Exeption Method...!!! "
 				+ httpServletRequest.getRequestURI());
-		ModelAndView model = new ModelAndView("error/generic_error");
-		String status = HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase()
-				+ " :: " + HttpStatus.INTERNAL_SERVER_ERROR.value();
-		model.addObject("errCode", status);
-		model.addObject("errMsg", ex.getMessage());
-		model.addObject("stackTrace", ex.getStackTrace());
-		model.addObject("className", ex.getClass());
-		model.addObject("date", new Date());
-		model.addObject("url", httpServletRequest.getRequestURI());
-		return model;
+		String status = HttpStatus.NOT_FOUND.getReasonPhrase() + " :: "
+				+ HttpStatus.NOT_FOUND.value();
+		model.addAttribute("errCode", status);
+		model.addAttribute("errMsg", ex.getMessage());
+		model.addAttribute("stackTrace", ex.getStackTrace());
+		model.addAttribute("className", ex.getClass());
+		model.addAttribute("date", new Date());
+		model.addAttribute("url", httpServletRequest.getRequestURI());
+		return "error/generic_error";
 	}
 
 }
