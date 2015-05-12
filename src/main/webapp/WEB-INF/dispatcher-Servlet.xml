@@ -24,6 +24,10 @@
 		</property>
 	</bean>
 
+	<!-- Default Servelt -->
+	<mvc:default-servlet-handler/>
+	<mvc:view-controller path="/" view-name="index" />
+
 
 	<!-- <bean -->
 	<!-- class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"> -->
