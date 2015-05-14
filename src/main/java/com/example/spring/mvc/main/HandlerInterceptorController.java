@@ -28,8 +28,8 @@ public class HandlerInterceptorController extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		logger.info("In Handler Interceptor Post Handle Method...!!! "
-				+ request.getRequestURI());
+//		logger.info("In Handler Interceptor Post Handle Method...!!! "
+//				+ request.getRequestURI());
 		super.postHandle(request, response, handler, modelAndView);
 	}
 
@@ -37,8 +37,8 @@ public class HandlerInterceptorController extends HandlerInterceptorAdapter {
 	public void afterCompletion(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		logger.info("In Handler Interceptor After Completion Method...!!! "
-				+ request.getRequestURI());
+		// logger.info("In Handler Interceptor After Completion Method...!!! "
+		// + request.getRequestURI());
 		super.afterCompletion(request, response, handler, ex);
 	}
 }
