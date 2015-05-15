@@ -34,11 +34,11 @@
 	<!-- <property name="host" value="localhost" /> -->
 	<!-- <property name="port" value="27017" /> -->
 	<!-- </bean> -->
-	<mongo:mongo host="localhost" port="27017"></mongo:mongo>
+	<mongo:mongo host="${host}" port="${port}"></mongo:mongo>
 	<!-- MongoTemplate for connecting and quering the documents in the database -->
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongo" ref="mongo" />
-		<constructor-arg name="databaseName" value="SpringMvcDb" />
+		<constructor-arg name="databaseName" value="${db}" />
 	</bean>
 
 	<!-- Default Servelt -->

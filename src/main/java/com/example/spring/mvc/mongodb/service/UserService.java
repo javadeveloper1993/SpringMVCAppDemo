@@ -1,4 +1,4 @@
-package com.example.spring.mvc.mongodb.repository;
+package com.example.spring.mvc.mongodb.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

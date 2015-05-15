@@ -10,7 +10,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.spring.mvc.model.User;
-import com.example.spring.mvc.mongodb.repository.UserService;
+import com.example.spring.mvc.mongodb.service.UserService;
 
 /**
  * @author Maulik
