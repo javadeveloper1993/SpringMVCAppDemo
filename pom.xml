@@ -16,6 +16,7 @@
 		<springMongoDbData.version>1.7.0.RELEASE</springMongoDbData.version>
 		<mongdb-java.version>3.0.1</mongdb-java.version>
 		<spring-data-common.version>1.10.0.RELEASE</spring-data-common.version>
+		<spring-data-mongodb-log4j.version>1.7.0.RELEASE</spring-data-mongodb-log4j.version>
 	</properties>
 	<dependencies>
 
@@ -24,6 +25,13 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>${springMongoDbData.version}</version>
+		</dependency>
+
+		<!-- Spring-data MongoDb Log4j -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb-log4j</artifactId>
+			<version>${spring-data-mongodb-log4j.version}</version>
 		</dependency>
 
 		<!-- MongoDb Java Driver -->

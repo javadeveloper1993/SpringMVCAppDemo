@@ -33,7 +33,7 @@
 				name="userName" />
 		</div>
 		<div class="lableWidth">
-			<label>Password :</label> <input type="text" id="password"
+			<label>Password :</label> <input type="password" id="password"
 				name="password" />
 		</div>
 		<div class="lableWidth">

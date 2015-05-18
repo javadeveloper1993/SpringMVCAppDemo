@@ -6,6 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Index Page</title>
 </head>
-<body>Index Page For Spring MVC 
+<body>
+	<h2>Index Page For Spring MVC</h2>
+	<div>
+		<div>
+			<a href="<%=request.getContextPath()%>/userWeb/registration">User Registration</a>
+		</div>
+		<div>
+			<a href="<%=request.getContextPath()%>/userWeb/view">User Detail</a>
+		</div>
+	</div>
+
 </body>
 </html>

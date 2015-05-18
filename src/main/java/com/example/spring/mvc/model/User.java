@@ -1,5 +1,6 @@
 package com.example.spring.mvc.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -9,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user")
 public class User {
 
+	@Id
+	private String id;
 	private String userId;
 	private String firstName;
 	private String lastName;
@@ -64,11 +67,19 @@ public class User {
 		this.age = age;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", userName=" + userName
-				+ ", password=" + password + ", age=" + age + "]";
+		return "User [id=" + id + ", userId=" + userId + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", userName="
+				+ userName + ", password=" + password + ", age=" + age + "]";
 	}
 
 }
