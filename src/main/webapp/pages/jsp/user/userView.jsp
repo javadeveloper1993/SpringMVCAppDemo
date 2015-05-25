@@ -15,9 +15,15 @@ td,th {
 <script type="text/javascript">
 	var userId=<%=request.getParameter("userId")%>;
 	
+	$(function(){
+		findUser();
+	});
+	
 	function findUser(){
 		var user={};
-		user.userId=$("#userIdText").val();
+		if($("#userIdText").val()!=""){
+			user.userId=$("#userIdText").val();
+		}
 		$.ajax({
 			type : "POST",
 			url : "/SpringMvcAppDemo/user/get",
@@ -25,7 +31,7 @@ td,th {
 			contentType : 'application/json',
 			success : function(data) {
 				if(data==""){
-					$('#userTable').html("<table><tr><td colspan=6>No Data Found.</td></tr></table>");
+					$('#userTable').html("<table><tr><td colspan=7>No Data Found.</td></tr></table>");
 				}else{
 					setUserData(data);					
 				}
@@ -36,32 +42,80 @@ td,th {
 		});
 	}
 	
-	function setUserData(user){
-		var tableData="<table>"
-					 +"<tr><td>"
-					 + 	user.userId				 
+	function setUserData(userList){
+		var html="";
+		$.each(userList,function(){
+			html+=createDynamicViewuser(this);
+		});
+		$('#userTable').html(html);
+	}
+	
+	function createDynamicViewuser(user){
+		var tableData="<tr><td>"
+					 + user.userId				 
 					 +"</td>"
 					 +"<td>"
 					 + 	user.firstName				 
 					 +"</td>"
 					 +"<td>"
-					 + 	user.lastName				 
+					 + user.lastName				 
 					 +"</td>"
 					 +"<td>"
-					 + 	user.userName			 
+					 + user.userName			 
 					 +"</td>"
 					 +"<td>"
-					 + 	user.password				 
+					 + user.password				 
 					 +"</td>"
 					 +"<td>"
-					 + 	user.age				 
+					 + user.age				 
 					 +"</td>"
-					 +"</table>";
-		$('#userTable').html(tableData);
+					 +"<td>"
+					 + '<input type=button value=Delete onclick=removeUser("'+user.id+'")>'
+					 + '<input type=button value=Update onclick=updateUser("'+user.id+'")>'
+					 +"</td>"
+					 +"</tr>";
+		 return tableData;
 	}
+	
+	function removeUser(userId){
+		var user={};
+		user.id=userId;
+		$.ajax({
+			type : "POST",
+			url : "/SpringMvcAppDemo/user/remove",
+			data : JSON.stringify(user),
+			contentType : 'application/json',
+			success : function(data) {
+				console.log(JSON.stringify(data));
+				findUser();
+			},
+			error : function(xhr, status, error) {
+				alert('<p>An error has occurred</p>' +  xhr.responseTex);
+			},
+		});
+	}
+	
+	function updateUser(userId){
+		location.href='<%=request.getContextPath()%>/userWeb/registration?userId='+userId+'&editMode=true';
+// 		$.ajax({
+// 			type : "POST",
+// 			url : "/SpringMvcAppDemo/user/get",
+// 			data : JSON.stringify(user),
+// 			contentType : 'application/json',
+// 			success : function(data) {
+// 			},
+// 			error : function(xhr, status, error) {
+// 				alert('<p>An error has occurred</p>' +  xhr.responseTex);
+// 			},
+// 		});
+	}
+	
 </script>
 </head>
 <body>
+	<div align="left">
+		<a href='<%=request.getContextPath()%>/userWeb/registration?editMode=false'>User Registration</a>
+	</div>
 	<div align="center">
 		<h3>User Detail</h3>
 		<div>
@@ -84,6 +138,7 @@ td,th {
 						<th>UserName</th>
 						<th>Password</th>
 						<th>Age</th>
+						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody id="userTable">

@@ -10,10 +10,10 @@
 	<h2>Index Page For Spring MVC</h2>
 	<div>
 		<div>
-			<a href="<%=request.getContextPath()%>/userWeb/registration">User Registration</a>
+			<a href='<%=request.getContextPath()%>/userWeb/registration?editMode=false'>User Registration</a>
 		</div>
 		<div>
-			<a href="<%=request.getContextPath()%>/userWeb/view">User Detail</a>
+			<a href="<%=request.getContextPath()%>/userWeb/view">User Search</a>
 		</div>
 	</div>
 

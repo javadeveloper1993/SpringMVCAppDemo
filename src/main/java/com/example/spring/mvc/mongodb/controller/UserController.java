@@ -1,5 +1,7 @@
 package com.example.spring.mvc.mongodb.controller;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,8 +38,21 @@ public class UserController {
 
 	@RequestMapping(value = "/get", method = RequestMethod.POST)
 	@ResponseBody
-	public User getUser(@RequestBody User user) {
+	public List<User> getUser(@RequestBody User user) {
 		return userService.getUser(user);
+	}
+	
+	@RequestMapping(value = "/findById", method = RequestMethod.POST)
+	@ResponseBody
+	public User getFindByIdUser(@RequestBody User user) {
+		return userService.getUserById(user);
+	}
+
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	@ResponseBody
+	public String removeUser(@RequestBody User user) {
+		userService.removeUser(user);
+		return "userWeb/view";
 	}
 
 }
