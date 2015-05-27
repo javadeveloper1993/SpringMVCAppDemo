@@ -5,8 +5,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,9 +28,8 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String createUser(@ModelAttribute User user, Model model) {
+	public String createUser(@RequestBody User user) {
 		userService.addUser(user);
-		model.addAttribute("userId", user.getUserId());
 		return "user/userView";
 	}
 
@@ -40,6 +37,13 @@ public class UserController {
 	@ResponseBody
 	public List<User> getUser(@RequestBody User user) {
 		return userService.getUser(user);
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@ResponseBody
+	public String updateUser(@RequestBody User user) {
+		userService.updateUser(user);
+		return "userWeb/view";
 	}
 	
 	@RequestMapping(value = "/findById", method = RequestMethod.POST)

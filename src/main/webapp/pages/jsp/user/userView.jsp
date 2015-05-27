@@ -13,8 +13,6 @@ td,th {
 
 </style>
 <script type="text/javascript">
-	var userId=<%=request.getParameter("userId")%>;
-	
 	$(function(){
 		findUser();
 	});

@@ -17,7 +17,7 @@
 	$(function(){
 		var userId='<%=request.getParameter("userId")%>';
 		editMode=<%=request.getParameter("editMode")%>;
-		if(userId != null){
+		if(editMode){
 			var user={};
 			user.id=userId;
 			$.ajax({
@@ -26,7 +26,7 @@
 				data : JSON.stringify(user),
 				contentType : 'application/json',
 				success : function(data) {
-					console.log(JSON.stringify(data));
+					userData=data;
 					setUserDetail(data);
 				},
 				error : function() {
@@ -46,11 +46,12 @@
 	}
 	
 	function addUser(){
+		var user=new Object();
 		var url="/SpringMvcAppDemo/user/save";
 		if(editMode){
 			url="/SpringMvcAppDemo/user/update";
+			user.id=userData.id;
 		}
-		var user=new Object();
 			user.userId=$('#userId').val();
 			user.firstName=$('#firstName').val();
 			user.lastName=$('#lastName').val();
