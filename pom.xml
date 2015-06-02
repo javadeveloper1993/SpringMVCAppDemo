@@ -188,7 +188,7 @@
 			<properties>
 				<server>localhost</server>
 				<port>8181</port>
-				<path>/SpringMvcAppDemo</path>
+				<path>/SpringWebMvcAppDemo</path>
 				<username>tomcat</username>
 				<password>tomcat</password>
 				<finalName>SpringMvcAppDemo</finalName>

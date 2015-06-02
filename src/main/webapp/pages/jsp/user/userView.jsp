@@ -13,6 +13,10 @@ td,th {
 
 </style>
 <script type="text/javascript">
+	var contextPath="<%=request.getContextPath()%>";
+	console.log(" >>>>> contextPath ::: "+contextPath);
+	console.log(" >>>>>>>>> Page Context Path :: ${pageContext.request.contextPath}");
+
 	$(function(){
 		findUser();
 	});
@@ -24,8 +28,9 @@ td,th {
 		}
 		$.ajax({
 			type : "POST",
-			url : "/SpringMvcAppDemo/user/get",
+			url : "${pageContext.request.contextPath}/user/get",
 			data : JSON.stringify(user),
+			dataType:"json",
 			contentType : 'application/json',
 			success : function(data) {
 				if(data==""){
@@ -34,8 +39,8 @@ td,th {
 					setUserData(data);					
 				}
 			},
-			error : function() {
-				alert('<p>An error has occurred</p>');
+			error : function(response) {
+				alert('<p>An error has occurred</p>'+response.message);
 			},
 		});
 	}
@@ -80,7 +85,7 @@ td,th {
 		user.id=userId;
 		$.ajax({
 			type : "POST",
-			url : "/SpringMvcAppDemo/user/remove",
+			url : "${pageContext.request.contextPath}/user/remove",
 			data : JSON.stringify(user),
 			contentType : 'application/json',
 			success : function(data) {

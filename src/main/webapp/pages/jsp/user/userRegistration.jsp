@@ -22,7 +22,7 @@
 			user.id=userId;
 			$.ajax({
 				type : "POST",
-				url : "/SpringMvcAppDemo/user/findById",
+				url : "${pageContext.request.contextPath}/user/findById",
 				data : JSON.stringify(user),
 				contentType : 'application/json',
 				success : function(data) {
@@ -47,9 +47,9 @@
 	
 	function addUser(){
 		var user=new Object();
-		var url="/SpringMvcAppDemo/user/save";
+		var url="${pageContext.request.contextPath}/user/save";
 		if(editMode){
-			url="/SpringMvcAppDemo/user/update";
+			url="${pageContext.request.contextPath}/user/update";
 			user.id=userData.id;
 		}
 			user.userId=$('#userId').val();
